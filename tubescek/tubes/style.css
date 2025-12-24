@@ -1,0 +1,23 @@
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+    width: 8px;
+}
+::-webkit-scrollbar-track {
+    background: #EFDBC4;
+}
+::-webkit-scrollbar-thumb {
+    background: #604230;
+    border-radius: 4px;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+/* Helper to center content if needed */
+.center-absolute {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
