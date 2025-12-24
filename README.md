@@ -137,3 +137,38 @@ php artisan migrate:fresh --seed
    - **Manajemen Stok**: Admin dapat melihat dan mengelola stok produk
    - **Image Preview**: Tampilan thumbnail image di tabel produk dan form modal
    - **Role Check**: Hanya admin yang dapat mengakses dashboard dengan pengecekan role di backend dan frontend
+
+## Migration Guide (XAMPP to Laragon)
+
+Jika ingin pindah dari XAMPP ke Laragon:
+
+1. **Backup Database**:
+   ```bash
+   mysqldump -u root -p coffee_shop > coffee_shop_backup.sql
+   ```
+
+2. **Copy Project Folder**:
+   - Copy folder `coffee-shop-backend` ke `C:\laragon\www\`
+
+3. **Import Database di Laragon**:
+   - Buka HeidiSQL atau phpMyAdmin di Laragon
+   - Create database baru `coffee_shop`
+   - Import file `coffee_shop_backup.sql`
+
+4. **Update .env**:
+   ```env
+   DB_CONNECTION=mysql
+   DB_HOST=127.0.0.1
+   DB_PORT=3306
+   DB_DATABASE=coffee_shop
+   DB_USERNAME=root
+   DB_PASSWORD=
+   ```
+
+5. **Clear Cache & Run**:
+   ```bash
+   cd C:\laragon\www\coffee-shop-backend
+   composer install
+   php artisan cache:clear
+   php artisan serve
+   ```
